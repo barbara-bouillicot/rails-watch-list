@@ -1,4 +1,16 @@
 <div class="container">
   <h1>List</h1>
   <%= @list.name %>
+
+  <% @bookmarks.each do | bookmark | %>
+   <li><%= bookmark.movie.title %> | <%= bookmark.movie.overview %> | <%= bookmark.movie.rating %> | <%= bookmark.movie.poster_url %> </li>
+   <p><%=bookmark.comment  %></p>
+   <button type="button" class="btn-outline-primary">
+  <%= link_to "Delete a bookmark", bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+</button>
+  <% end %><br><br>
+
+   <button type="button" class="btn-outline-primary"><%= link_to "add a bookmark", new_list_bookmark_path(@list)%></button><br><br>
+
+  <button type="button" class="btn-outline-primary"><%= link_to "Back to lists", lists_path%></button>
 </div>
