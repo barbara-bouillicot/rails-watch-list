@@ -1,7 +1,8 @@
 <div class="container">
 <h2>New list</h2>
-<%= simple_form_for (@list) do |f| %>
+<%= simple_form_for(@list) do |f| %>
   <%= f.input :name %>
+  <%= f.input :photo, as: :file %>
   <%=  f.submit %>
 <% end %>
 </div>
