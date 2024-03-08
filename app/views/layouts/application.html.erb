@@ -9,8 +9,16 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-
+  <div class="navbar">
+    <%= image_tag "logo.png", class: "logo" %>
+  <nav class="right">
+    <button type="button" class="btn"><%= link_to "My Lists", lists_path%></button>
+    <button type="button" class="btn"><%= link_to "New list", new_list_path%></button>
+  </nav>
+</div>
   <body>
     <%= yield %>
   </body>
+
+  <footer class="navbar mt-3" style="background-image: url('<%= image_path "cinema.jpg" %>');"></footer>
 </html>
