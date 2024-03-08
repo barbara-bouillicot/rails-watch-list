@@ -6,15 +6,15 @@
   </div>
 </div>
 
-
 <div class="container">
 
   <div class="list-cards-container container d-flex flex-column justify-spac align-items-center mb-3">
     <h2 class="text-white">My lists</h2>
       <% @lists.each do |list| %>
 
-        <div class ="list-card btn" style="background-image: url('<%= image_path "list-bg.png" %>');" ><%= link_to list.name, list_path(list) %></div>
 
+        <div class ="list-card btn" style="background-image: url('<%= cl_image_path(list.photo.key) %>');">
+        <%= link_to list.name, list_path(list) %></div>
 
     <% end %>
 
