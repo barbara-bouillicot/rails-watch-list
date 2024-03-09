@@ -19,3 +19,27 @@ body{
   background-position: center;
   background-repeat: no-repeat;
 }
+
+.movies-label{
+  width: 120px;
+  position: absolute;
+  top:80px;
+  right:50px;
+  border: 1px solid black;
+  border-radius: 4px;
+  background-color: darkred;
+  color: white;
+  text-align:center;
+  padding: 8px 12px;
+  opacity:0.6;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.movies-label:hover{
+    opacity: 1;
+}
+
+.review{
+  margin-top: 20px;
+}

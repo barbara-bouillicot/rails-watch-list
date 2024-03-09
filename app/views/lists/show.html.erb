@@ -1,5 +1,8 @@
 <div class="banner" style="background-image: url('<%= cl_image_path(@list.photo.key) %>')">
+  <div class="container movies-label">
 
+    <div><%= @list.bookmarks.count %> movies</div>
+  </div>
   <h1><%= @list.name %></h1>
 </div>
 <div class="container d-flex justify-content-end my-3 w-100">
@@ -11,7 +14,7 @@
 </div>
 <div class="container d-flex justify-content-between">
       <% @bookmarks.each do | bookmark | %>
-      <div class="movie-card my-3">
+      <div class="movie-card">
         <p><%= image_tag bookmark.movie.poster_url, width: 250%></p>
         <p><strong><%= bookmark.movie.title %></strong> | <%= bookmark.movie.rating %> ⭐</p>
         <p><%= bookmark.movie.overview %></p>
@@ -21,4 +24,26 @@
         </div>
          </div>
       <% end %><br><br>
+</div>
+
+<div class="container d-flex justify-content-between flex-align-items-center">
+
+   <div class="reviews-wrapper w-50 mt-6">
+    <h3>Reviews</h3>
+    <% @list.reviews.each do | review | %>
+    <p><%= review.rating %> ⭐</p>
+    <div class="review"><%= review.comment %></div>
+    <div>---------------------------------------------------------------</div>
+    <% end %>
+  </div>
+
+  <div class="form-wrapper w-50">
+    <p>Add your review about this list:</p>
+    <%= simple_form_for [@list, @review] do |f| %>
+      <%= f.input :comment, as: :text %>
+      <%= f.input :rating, as: :select, collection: (1..5), required: true, prompt: "What's your rating", input_html: { data: { controller: "jquery-bar-rating" } } %>
+      <%=  f.submit%>
+    <% end %>
+  </div>
+
 </div>
