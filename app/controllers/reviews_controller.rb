@@ -1,12 +1,10 @@
 class ReviewsController < ApplicationController
-
+  before_action :set_list
   def new
-    @list = List.find(params[:list_id])
     @review = Review.new
   end
 
   def create
-    @list = List.find(params[:list_id])
     @review = Review.new(review_params)
     @review.list = @list
     if @review.save
@@ -17,6 +15,10 @@ class ReviewsController < ApplicationController
   end
 
     private
+
+    def set_list
+      @list = List.find(params[:list_id])
+    end
 
     def review_params
       params.require(:review).permit(:comment, :rating)
